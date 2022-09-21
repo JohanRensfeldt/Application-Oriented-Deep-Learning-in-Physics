@@ -63,7 +63,7 @@ print("Quality:", y_train[0])
 
 # %%
 # Initialise weights with suitable random distributions
-hidden_nodes = 50 # number of nodes in the hidden layer
+hidden_nodes = 60 # number of nodes in the hidden layer
 n_inputs = 11 # input features in the dataset
 
 W = np.random.randn(hidden_nodes,11)*np.sqrt(2./n_inputs)
@@ -88,7 +88,7 @@ def dnn(x,W,b,Wp,bp):
 # %%
 def update_weights(x,y, W, b, Wp, bp):
     
-    learning_rate = 0.01
+    learning_rate = 0.0001
 
     out = dnn(x,W,b,Wp,bp)
 
@@ -101,17 +101,12 @@ def update_weights(x,y, W, b, Wp, bp):
     
     Wk_prime = np.outer(2*(out-y)*Wp * np.heaviside(np.dot(W,x) + b,0), x) 
 
-    heavy  =  np.heaviside(np.dot(W,x) + b,0)
 
     W_new = W - learning_rate * Wk_prime
     b_new = b - learning_rate * b_prime
     Wp_new = Wp - learning_rate * Wp_prime
     bp_new = bp - learning_rate * bp_prime
 
-    print("W_new", W_new.shape)
-    print("b_new", b_new.shape)
-    print("Wp_new", Wp_new.shape)
-    print("bp_new", bp_new.shape)
 
 
 
@@ -147,7 +142,7 @@ test_losses = []
 # How many epochs to train
 # This will just train for one epoch
 # You will want a higher number once everything works
-n_epochs = 1
+n_epochs = 1000
 
 # Loop over the epochs
 for ep in range(n_epochs):
