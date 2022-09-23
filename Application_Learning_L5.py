@@ -142,7 +142,7 @@ test_losses = []
 # How many epochs to train
 # This will just train for one epoch
 # You will want a higher number once everything works
-n_epochs = 1000
+n_epochs = 100
 
 # Loop over the epochs
 for ep in range(n_epochs):
